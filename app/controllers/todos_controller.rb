@@ -10,6 +10,11 @@ class TodosController < ApplicationController
   end
 
   def destroy
+    if Todo.delete(params[:id])
+      redirect_to tasks_path, notice: 'Task unmarked'
+    else
+      redirect_to tasks_path, alert: 'Oops, something went wrong...'
+    end
   end
 
   private
