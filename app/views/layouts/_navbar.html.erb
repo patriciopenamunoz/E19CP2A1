@@ -14,8 +14,8 @@
           Login
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Sign In</a>
-          <a class="dropdown-item" href="#">Sign Up</a>
+          <%= link_to 'Sign In', new_user_session_path, class: 'dropdown-item' %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'dropdown-item' %>
         </div>
       </li>
     </ul>
