@@ -1,23 +1,33 @@
 <div class="row">
   <div class="col">
-    <%= image_tag @task.photo, class: 'img-fluid' %>
-  </div>
-  <div class="col">
     <div class="card">
       <div class="card-header">
-        <%= @task.title %>
+        <h4><%= @task.title %></h4>
       </div>
       <div class="card-body">
         <%= @task.description %>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= image_tag @task.photo, class: 'img-fluid rounded' %>
+  </div>
+  <div class="col-md-5">
     <div class="card">
       <div class="card-header">
         Top 5
       </div>
       <ul class="list-group list-group-flush">
-        <% @top.each do |user| %>
-        <li class="list-group-item"><%= user.email %></li>
+        <% @top.each_with_index do |user, i| %>
+        <li class="list-group-item">
+          <span class="badge badge-success top-badge">
+            <%= "##{ i + 1 }" %>
+          </span>
+          <%= image_tag user.photo, class:'top-img rounded-circle' %>
+          <%= "#{user.first_name} #{user.last_name}" %>
+        </li>
         <% end %>
       </ul>
     </div>
@@ -31,7 +41,10 @@
       </div>
       <ul class="list-group list-group-flush">
         <% @users.each do |user| %>
-        <li class="list-group-item"><%= user.email %></li>
+        <li class="list-group-item">
+          <%= image_tag user.photo, class:'list-img rounded-circle' %>
+          <%= "#{user.first_name} #{user.last_name}" %>
+        </li>
         <% end %>
       </ul>
     </div>
