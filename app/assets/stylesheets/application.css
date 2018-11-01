@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+body{
+  background-color: rgb(105, 201, 115);
+}
+
+.container-margins{
+   margin-top: 20px;
+   margin-bottom: 20px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   background-color: white;
+ }
+
+.no-padding{
+  padding: 0;
+}
