@@ -1,25 +1,6 @@
 <h1>Tasks</h1>
 <div class="row">
   <% @tasks.each do |task| %>
-  <div class="card" style="width: 18rem;">
-    <%= image_tag task.photo, class: 'card-img-top' %>
-    <div class="card-header">
-      <%= task.title %>
-    </div>
-    <div class="card-body">
-      <%= link_to 'See details', task_path(task), class: 'btn btn-warning' %>
-      <% if current_user.tasks.exists?(task.id) %>
-      <%= link_to 'Unmark this task',
-      task_todo_path(task.id, current_user.todos.find_by(task_id: task.id)),
-      method: 'delete',
-      class: 'btn btn-danger' %>
-      <% else %>
-      <%= link_to 'Mark as completed',
-      task_todos_path(task),
-      method: 'post',
-      class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'task', task: task %>
   <% end %>
 </div>

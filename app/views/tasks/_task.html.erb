@@ -1,0 +1,59 @@
+<div class="col-xs-12 col-sm-6 col-md-12">
+    <div class="container task-card">
+      <div class="row">
+        <div class="col-md-2 no-padding">
+          <%= image_tag task.photo, class: 'img-fluid' %>
+        </div>
+        <div class="col-md-8 no-padding">
+          <div class="container">
+            <div class="row separate">
+              <div class="col task-header">
+                <%= task.title %>
+              </div>
+            </div>
+            <div class="row separate">
+              <div class="col">
+                <%= link_to 'See details',
+                            task_path(task),
+                            class: 'btn btn-warning' %>
+                <% if current_user.tasks.exists?(task.id) %>
+                <%= link_to 'Unmark this task',
+                             task_todo_path(task.id,
+                                            current_user
+                                            .todos.find_by(task_id: task.id)),
+                             method: 'delete',
+                             class: 'btn btn-danger' %>
+                <% else %>
+                <%= link_to 'Mark as completed',
+                            task_todos_path(task),
+                            method: 'post',
+                            class: 'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if current_user.tasks.exists?(task.id) %>
+        <div class="col-md-2 bg-success text-black-50">
+          <div class="container" style="height: 100%">
+            <div class="row" style="height: 100%">
+              <div class="col align-self-center status-bar" style="text-align: center">
+                <span class="status-icon fas fa-check"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-md-2 bg-danger text-black-50 status-bar">
+          <div class="container" style="height: 100%">
+            <div class="row" style="height: 100%">
+              <div class="col align-self-center status-bar" style="text-align: center">
+                <span class="status-icon fas fa-times"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+</div>
