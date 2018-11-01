@@ -1,19 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @task.photo %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<div class="row">
+  <div class="col">
+    <%= image_tag @task.photo, class: 'img-fluid' %>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <%= @task.title %>
+      </div>
+      <div class="card-body">
+        <%= @task.description %>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Top 5
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @top.each do |user| %>
+        <li class="list-group-item"><%= user.email %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        Users who completed this task
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @users.each do |user| %>
+        <li class="list-group-item"><%= user.email %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

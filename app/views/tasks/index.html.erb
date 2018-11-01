@@ -7,6 +7,7 @@
       <%= task.title %>
     </div>
     <div class="card-body">
+      <%= link_to 'See details', task_path(task), class: 'btn btn-warning' %>
       <% if current_user.tasks.exists?(task.id) %>
       <%= link_to 'Unmark this task',
       task_todo_path(task.id, current_user.todos.find_by(task_id: task.id)),

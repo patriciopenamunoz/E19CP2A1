@@ -11,6 +11,8 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @users = @task.users
+    @top = @task.todos.order(created_at: :asc).limit(5).map { |t| t.user }
   end
 
   # GET /tasks/new
