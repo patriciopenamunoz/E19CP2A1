@@ -9,8 +9,8 @@
 # Modify the following values to control the number of records
 # which will be generated with rails db:seed
 tasks_number = 9
-users_number = 45
-tasks_by_user = 4
+users_number = 20
+tasks_by_user = 3
 #########################################################################
 Todo.delete_all
 User.delete_all
