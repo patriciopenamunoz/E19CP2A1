@@ -19,20 +19,26 @@ Task.delete_all
 # This user was created for testing purposes
 User.create(email: 'abc@abc.com',
             password: '123456',
-            password_confirmation: '123456')
+            password_confirmation: '123456',
+            first_name: Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            photo: "https://loremflickr.com/120/120/dog?lock=480")
 ############################################
 
 tasks_number.times do |i|
   task = Task.new
   task.title = Faker::Hipster.sentence
   task.description = Faker::Hipster.paragraph(2)
-  task.photo = "https://loremflickr.com/640/480?lock=#{ i + 1 }"
+  task.photo = "https://loremflickr.com/640/480/cat?lock=#{ i + 1 }"
   task.save
 end
 tasks = Task.all.map { |t| t.id }
 users_number.times do |i|
   password = Faker::Crypto.md5
-  user = User.new(email: Faker::Internet.email,
+  user = User.new(first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
+                  photo: "https://loremflickr.com/120/120/dog?lock=#{ i + 1 }",
+                  email: Faker::Internet.email,
                   password: password,
                   password_confirmation: password)
   user.save
