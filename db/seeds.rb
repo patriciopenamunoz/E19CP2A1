@@ -26,7 +26,7 @@ tasks_number.times do |i|
   task = Task.new
   task.title = Faker::Hipster.sentence
   task.description = Faker::Hipster.paragraph(2)
-  task.photo = "http://lorempixel.com/640/480/people/#{ i + 1 }"
+  task.photo = "https://loremflickr.com/640/480?lock=#{ i + 1 }"
   task.save
 end
 tasks = Task.all.map { |t| t.id }
